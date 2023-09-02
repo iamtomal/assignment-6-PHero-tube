@@ -14,7 +14,7 @@ const handleCategory = async () => {
     newData.forEach((category) => {
         const div = document.createElement('div');
         div.innerHTML =`
-        <button onclick = "handleCategoryId(${category.category_id})" class="bg-gray-300 hover:bg-red-500 px-4 py-2 rounded-md font-semibold hover:text-white">${category.category}</button>
+        <button onclick = "handleCategoryId(${category.category_id})" class="bg-gray-300 focus:bg-red-500 px-4 py-2 rounded-md font-semibold focus:text-white">${category.category}</button>
         `
         categoryContainer.appendChild(div);
     });
