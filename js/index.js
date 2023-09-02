@@ -1,3 +1,8 @@
+const handleBlog = () =>{
+  window.location.href = "blog.html";
+}
+
+
 const handleCategory = async () => {
     
     const res = await fetch(" https://openapi.programming-hero.com/api/videos/categories");
@@ -17,14 +22,14 @@ const handleCategory = async () => {
 };
 
 const handleCategoryId = async(id) => {
-console.log(id);
+
     const res = await fetch(`https://openapi.programming-hero.com/api/videos/category/${id}`)
     const data = await res.json();
 
     const cardContainer = document.getElementById('card-container')
     const newData = (data?.data);
     console.log(newData);
-
+    cardContainer.innerHTML = '';
     newData?.forEach((card) => {
         const div = document.createElement('div');
         div.innerHTML =`
@@ -64,6 +69,8 @@ console.log(id);
         cardContainer.appendChild(div)
     }); 
 };
+
+
 
 
 
