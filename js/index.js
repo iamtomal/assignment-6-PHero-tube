@@ -10,7 +10,6 @@ const handleCategory = async () => {
     
     const categoryContainer = document.getElementById('category-container')
     const newData = (data?.data);
-    // console.log(newData);
 
     newData.forEach((category) => {
         const div = document.createElement('div');
@@ -29,7 +28,6 @@ const handleCategoryId = async(id) => {
     const cardContainer = document.getElementById('card-container')
     const drawField = document.getElementById('drawField')
     const newData = (data?.data);
-    console.log(newData.length);
 
     cardContainer.innerHTML = '';
    
@@ -45,18 +43,16 @@ const handleCategoryId = async(id) => {
 
       const time = card.others.posted_date;
       const fullTime = handleTime(time);
-      console.log(fullTime);
 
         const div = document.createElement('div');
         div.innerHTML =`
         <div class="m-11 lg:m-0 md:m-6 rounded-t-lg bg-base-100 hover:shadow-2xl bg-gray-100">
-            <figure>
+            <div>
+            <img class=" w-[100%] rounded-t-lg h-44 relative" src=${card?.thumbnail}/>
+            <h3 class=" absolute  bg-black text-white rounded-md px-1 ml-48 md:ml-44 lg:ml-40 -mt-8 ">${fullTime.hour? fullTime.hour : ''} ${fullTime.hour? 'hrs' : ''} ${fullTime.minute? fullTime.minute : ''} ${fullTime.minute? 'min ago' : ''}
+            </h3>
             
-            <img class="w-[100%] rounded-t-lg h-44 relative" src=${card?.thumbnail}/>
-            
-            <h3 class="absolute bg-black text-white rounded-md px-1 ml-48 md:ml-44 lg:ml-40 mb-16">${fullTime.hour? fullTime.hour : ''} ${fullTime.hour? 'hrs' : ''} ${fullTime.minute? fullTime.minute : ''} ${fullTime.minute? 'min ago' : ''}</h3>
-            
-            </figure>
+            </div>
             <div class="flex m-2">
                 <div>
                     <img class="w-8 h-8 rounded-full mt-1" src=${card?.authors[0]?.profile_picture}>
