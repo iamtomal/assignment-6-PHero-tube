@@ -27,15 +27,36 @@ const handleCategoryId = async(id) => {
     const data = await res.json();
 
     const cardContainer = document.getElementById('card-container')
+    const drawField = document.getElementById('drawField')
     const newData = (data?.data);
-    console.log(newData);
+    console.log(newData.length);
+
     cardContainer.innerHTML = '';
+   
+   
+    if (newData.length === 0) {
+      drawField.classList.remove('hidden');
+    }
+    else{
+      drawField.classList.add('hidden');
+
+
     newData?.forEach((card) => {
+
+      const time = card.others.posted_date;
+      const fullTime = handleTime(time);
+      console.log(fullTime);
+
         const div = document.createElement('div');
         div.innerHTML =`
         <div class="m-11 lg:m-0 md:m-6 rounded-t-lg bg-base-100 hover:shadow-2xl bg-gray-100">
-            <figure class = ""><img class="w-[100%] rounded-t-lg h-44" src=${card?.thumbnail
-            }/></figure>
+            <figure>
+            
+            <img class="w-[100%] rounded-t-lg h-44 relative" src=${card?.thumbnail}/>
+            
+            <h3 class="absolute bg-black text-white rounded-md px-1 ml-40 mb-16">${fullTime.hour? fullTime.hour : ''} ${fullTime.hour? 'hrs' : ''} ${fullTime.minute? fullTime.minute : ''} ${fullTime.minute? 'min ago' : ''}</h3>
+            
+            </figure>
             <div class="flex m-2">
                 <div>
                     <img class="w-8 h-8 rounded-full mt-1" src=${card?.authors[0]?.profile_picture}>
@@ -68,8 +89,15 @@ const handleCategoryId = async(id) => {
 
         cardContainer.appendChild(div)
     }); 
+  }
 };
 
+const handleTime = (time) =>{
+  const oldMinutes = Math.floor(time/60);
+  const hours = Math.floor(oldMinutes/60);
+  const minutes = Math.floor(oldMinutes%60)
+  return  {hour:hours, minute:minutes};
+}
 
 
 
