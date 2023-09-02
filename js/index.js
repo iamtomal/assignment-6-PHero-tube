@@ -54,7 +54,7 @@ const handleCategoryId = async(id) => {
             
             <img class="w-[100%] rounded-t-lg h-44 relative" src=${card?.thumbnail}/>
             
-            <h3 class="absolute bg-black text-white rounded-md px-1 ml-40 mb-16">${fullTime.hour? fullTime.hour : ''} ${fullTime.hour? 'hrs' : ''} ${fullTime.minute? fullTime.minute : ''} ${fullTime.minute? 'min ago' : ''}</h3>
+            <h3 class="absolute bg-black text-white rounded-md px-1 ml-48 md:ml-44 lg:ml-40 mb-16">${fullTime.hour? fullTime.hour : ''} ${fullTime.hour? 'hrs' : ''} ${fullTime.minute? fullTime.minute : ''} ${fullTime.minute? 'min ago' : ''}</h3>
             
             </figure>
             <div class="flex m-2">
